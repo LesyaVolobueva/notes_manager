@@ -1,0 +1,12 @@
+/.idea
+/.vscode
+
+.eslintcache
+
+/node_modules
+
+/build
+
+*.log
+
+*.DS_Store
