@@ -1,0 +1,27 @@
+.title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

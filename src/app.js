@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+
+import NotesList from 'features/notes-list';
+import AddNote from 'features/add-note';
 
 const App = ({ history, store }) => (
   <Provider store={store}>
     <Router history={history}>
-      <h3>App</h3>
+      <Switch>
+        <Route path="/" exact component={NotesList} />
+        <Route path="/new" component={AddNote} />
+      </Switch>
     </Router>
   </Provider>
 );

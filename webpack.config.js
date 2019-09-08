@@ -49,5 +49,8 @@ module.exports = (env) => ({
     historyApiFallback: true,
     port: '3000',
     compress: true,
+  },
+  resolve: {
+    modules: ['src', 'node_modules'],
   }
 });
