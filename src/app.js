@@ -11,7 +11,8 @@ const App = ({ history, store }) => (
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={NotesList} />
-        <Route path="/new" component={AddNote} />
+        <Route path="/notes/new" component={AddNote} />
+        <Route path="/notes/:id" component={() => {}} />
       </Switch>
     </Router>
   </Provider>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Container from '@material-ui/core/Container';
 
+import NotesList from './component';
 import mapStateToProps from './selectors';
 import { fetchNotes } from '../actions';
 
@@ -12,12 +11,23 @@ class NotesListContainer extends Component {
     this.props.fetchNotes();
   }
 
+  handleDelete = () => {};
+
+  handleEdit = (id) => {
+    this.props.history.push(`notes/${id}`);
+  };
+
+  handleAdd = () => {
+    this.props.history.push('/notes/new');
+  };
+
   render() {
     return (
-      <Container maxWidth="sm">
-        {this.props.notes.map((note) => note.title)}
-        <Link to="/new"> Add note</Link>
-      </Container>
+      <NotesList
+        notes={this.props.notes}
+        onAdd={this.handleAdd}
+        onEdit={this.handleEdit}
+        onDelete={this.handleDelete} />
     );
   }
 }
@@ -27,6 +37,7 @@ const withStore = connect(mapStateToProps, { fetchNotes });
 NotesListContainer.propTypes = {
   fetchNotes: PropTypes.func.isRequired,
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withStore(NotesListContainer);

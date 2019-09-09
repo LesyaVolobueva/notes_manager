@@ -1,0 +1,9 @@
+.root {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
