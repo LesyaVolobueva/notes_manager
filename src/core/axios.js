@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import axios from 'axios';
 import { identity } from 'ramda';
 
@@ -24,19 +23,24 @@ const onRequestError = (error) => (
   Promise.reject(error)
 );
 
-const onResponseError = (error) => {
-  const isTokenRequest = getIsTokenRequest(error.config);
+const retryRequest = async (config) => {
+  const retry = axios.create();
+
+  try {
+    return await retry(config);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+const onResponseError = async (error) => {
   const isTokenExpired = error.response && error.response.status === 'UNAUTHORIZED';
 
   if (isTokenExpired) {
-    signIn();
-
-    if (!isTokenRequest) {
-      axios(error.config);
-    }
-  } else {
-    return Promise.reject(error);
+    await signIn();
   }
+
+  return retryRequest(error.config);
 };
 
 const configureAxios = () => {

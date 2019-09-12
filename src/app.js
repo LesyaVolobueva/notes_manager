@@ -5,6 +5,7 @@ import { Router, Switch, Route } from 'react-router-dom';
 
 import NotesList from 'features/notes-list';
 import AddNote from 'features/add-note';
+import EditNote from 'features/edit-note';
 
 const App = ({ history, store }) => (
   <Provider store={store}>
@@ -12,7 +13,7 @@ const App = ({ history, store }) => (
       <Switch>
         <Route path="/" exact component={NotesList} />
         <Route path="/notes/new" component={AddNote} />
-        <Route path="/notes/:id" component={() => {}} />
+        <Route path="/notes/:id" component={EditNote} />
       </Switch>
     </Router>
   </Provider>

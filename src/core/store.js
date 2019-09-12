@@ -6,7 +6,7 @@ import rootReducer from 'features/reducer';
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__();
 const initialState = {
   notes: [],
-  noteToEdit: null,
+  noteToEdit: {},
   isLoading: false,
   error: null,
 };

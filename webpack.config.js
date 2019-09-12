@@ -7,6 +7,7 @@ module.exports = (env) => ({
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     rules: [

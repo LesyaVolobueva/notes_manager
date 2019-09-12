@@ -107,6 +107,7 @@ module.exports = {
     "react/forbid-prop-types": ["error", { "forbid": ["any", "array"] }],
     "react/jsx-fragments": ["error", "element"],
     "react/state-in-constructor": ["error", "never"],
+    "react/jsx-props-no-spreading": "off",
 
     "import/first": "error",
     "import/no-anonymous-default-export": "error",

@@ -1,7 +1,7 @@
 const mapStateToProps = (state) => ({
-  notes: state.notes,
-  error: state.error,
+  note: state.noteToEdit,
   isLoading: state.isLoading,
+  error: state.error,
 });
 
 export default mapStateToProps;

@@ -24,6 +24,22 @@ const notesReducer = (state, action) => {
         error: null,
       };
 
+    case types.SET_NOTE_TO_EDIT:
+      return {
+        ...state,
+        noteToEdit: action.payload,
+        isLoading: false,
+        error: null,
+      };
+
+    case types.UPDATE_NOTE:
+      return {
+        ...state,
+        noteToEdit: {},
+        isLoading: false,
+        error: null,
+      };
+
     default:
       return state;
   }

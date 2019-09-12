@@ -27,7 +27,9 @@ class NotesListContainer extends Component {
         notes={this.props.notes}
         onAdd={this.handleAdd}
         onEdit={this.handleEdit}
-        onDelete={this.handleDelete} />
+        onDelete={this.handleDelete}
+        isLoading={this.props.isLoading}
+        error={this.props.error} />
     );
   }
 }
@@ -38,6 +40,12 @@ NotesListContainer.propTypes = {
   fetchNotes: PropTypes.func.isRequired,
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
   history: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+};
+
+NotesListContainer.defaultProps = {
+  error: undefined,
 };
 
 export default withStore(NotesListContainer);

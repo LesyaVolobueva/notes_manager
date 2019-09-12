@@ -4,6 +4,7 @@ import { Container, Fab, makeStyles } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
 import Note from 'features/note';
+import async from 'core/async';
 
 const useStyles = makeStyles(() => ({
   addIcon: {
@@ -41,4 +42,6 @@ NotesList.propTypes = {
   onAdd: PropTypes.func.isRequired,
 };
 
-export default NotesList;
+const withAsync = async();
+
+export default withAsync(NotesList);

@@ -29,3 +29,28 @@ export const createNote = (note) => (dispatch) => {
 
   return axios.post('notes', note);
 };
+
+const setNoteToEdit = (note) => ({
+  type: types.SET_NOTE_TO_EDIT,
+  payload: note,
+});
+
+export const getNoteById = (id) => (dispatch) => {
+  dispatch(setLoading());
+
+  return axios.get(`notes/${id}`)
+    .then((response) => dispatch(setNoteToEdit(response.data)))
+    .catch((error) => dispatch(setError(error)));
+};
+
+const updateNote = () => ({
+  type: types.UPDATE_NOTE,
+});
+
+export const updateNoteRequest = (note) => (dispatch) => {
+  dispatch(setLoading());
+
+  return axios.patch(`notes/${note.id}`, note)
+    .then(() => dispatch(updateNote()))
+    .catch((error) => dispatch(setError(error)));
+};

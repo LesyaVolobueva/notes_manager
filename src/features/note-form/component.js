@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
+import { equals } from 'ramda';
 
 import styles from './component.css';
 
@@ -20,6 +21,7 @@ const NoteForm = (props) => {
         <TextField
           label="Title"
           name="title"
+          value={note.title}
           className={styles.field}
           onChange={handleChange('title')}
           variant="outlined"
@@ -28,6 +30,7 @@ const NoteForm = (props) => {
         <TextField
           label="Content"
           name="content"
+          value={note.content}
           className={styles.field}
           onChange={handleChange('content')}
           variant="outlined"
@@ -39,7 +42,7 @@ const NoteForm = (props) => {
           color="primary"
           className={styles.button}
           onClick={() => props.onSubmit(note)}
-          disabled={!note.title}>
+          disabled={!note.title || equals(props.note, note)}>
           {props.buttonTitle}
         </Button>
       </form>
